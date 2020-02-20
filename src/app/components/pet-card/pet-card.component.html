@@ -1,1 +1,11 @@
-<p>pet-card works!</p>
+<div class="card animated fadeIn fast" > <!--heroe es una variable local que recién estoy creando, heroes es el arreglo que tengo en heroes.component.ts-->
+    <img [src]="" class="card-img-top" [alt]="pet.name">
+    <div class="card-body">
+      <h5 class="card-title">{{pet.name}}</h5>
+      <p class="card-text">Especie <small class="text-muted">{{pet.species}}</small></p>
+      <p class="card-text">Edad <small class="text-muted">{{pet.age}}</small></p>
+      <button class="btn btn-outline-primary btn-block">Ver historia clínica</button>
+      <button class="btn btn-outline-primary btn-block">Añadir nueva visita</button>
+    </div>
+  </div>
+  

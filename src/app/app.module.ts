@@ -9,6 +9,7 @@ import { PetsComponent } from './components/pets/pets.component';
 import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { MedicalRecordComponent } from './components/medical-record/medical-record.component';
 import { PetRecordComponent } from './components/pet-record/pet-record.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { PetRecordComponent } from './components/pet-record/pet-record.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

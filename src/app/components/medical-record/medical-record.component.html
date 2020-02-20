@@ -1,1 +1,40 @@
-<p>medical-record works!</p>
+<h4>Formulario <small>Nueva historia médica</small></h4>
+<hr>
+<form [formGroup]="medicalRecordForm" (ngSubmit)="saveChanges()">
+    <div formGroupName="petData">
+
+        <div class="form-group row" [ngClass]="{'has-danger': !medicalRecordForm.controls['petData'].controls['name'].valid}">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="name">
+                <div *ngIf="medicalRecordForm.get('petData.name').errors?.required" class="form-control-feedback">Por favor ingrese el nombre</div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Edad</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Edad" formControlName="age">
+            </div>
+        </div>
+    </div>
+
+    <div formGroupName="ownerData">
+
+        <div class="form-group row" [ngClass]="{'has-danger': !medicalRecordForm.controls['ownerData'].controls['ownerName'].valid}">
+            <label class="col-2 col-form-label">Nombre del dueñ@</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="ownerName">
+                <!--<div *ngIf="forma.get('ownerData.ownerName').errors?.required" class="form-control-feedback">Por favor ingrese el nombre</div>
+                <div *ngIf="forma.get('ownerData.ownerName').errors?.minlength" class="form-control-feedback">Por lo menos 2 caracteres</div>-->
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Apellido" formControlName="ownerLastName">
+            </div>
+        </div>
+    </div>
+</form>

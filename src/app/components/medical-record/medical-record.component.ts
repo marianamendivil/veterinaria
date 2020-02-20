@@ -1,15 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-medical-record',
   templateUrl: './medical-record.component.html',
   styleUrls: ['./medical-record.component.css']
 })
-export class MedicalRecordComponent implements OnInit {
+export class MedicalRecordComponent {
 
-  constructor() { }
+  medicalRecordForm: FormGroup;
 
-  ngOnInit() {
+  pet: Object = {
+    petData: {
+      name: "",
+      age: null,
+      species: "",
+      race: "",
+      gender: "",
+      weight: null,
+      color: "",
+      particularities: ""
+    },
+    ownerData: {
+      ownerName: "",
+      ownerLastName: "",
+      address: "",
+      phone: null,
+    }
+  }
+
+  constructor() {
+    console.log(this.pet);
+    
+    this.medicalRecordForm = new FormGroup({
+      'petData': new FormGroup({
+        'name': new FormControl('', Validators.required),
+        'age': new FormControl('', Validators.required)
+      }),
+      "ownerData": new FormGroup({
+        'ownerName': new FormControl('', [Validators.required, Validators.minLength(2)]),
+        'ownerLastName': new FormControl('', Validators.required)
+      })
+    });
+  }
+
+  saveChanges(){
+    console.log(this.medicalRecordForm.value);
   }
 
 }

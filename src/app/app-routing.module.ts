@@ -9,7 +9,7 @@ import { PetRecordComponent } from './components/pet-record/pet-record.component
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'pets', component: PetsComponent },
-  { path: 'medicalRecords', component: MedicalRecordComponent },
+  { path: 'medicalRecord', component: MedicalRecordComponent },
   { path: 'petRecord/:id', component: PetRecordComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
