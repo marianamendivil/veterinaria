@@ -45,7 +45,7 @@ export class MedicalRecordComponent {
   }
 
   saveChanges(){
-    console.log(this.medicalRecordForm.value);
+    console.log(this.medicalRecordForm);
   }
 
 }
