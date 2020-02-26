@@ -1,3 +1,8 @@
 <div class="card-columns">
-    <app-pet-card [pet]="pet" *ngFor="let pet of pets"></app-pet-card>
+  <app-pet-card
+    (petSelected)="openPet($event)"
+    [pet]="pet"
+    [id]="i"
+    *ngFor="let pet of pets; let i = index"
+  ></app-pet-card>
 </div>

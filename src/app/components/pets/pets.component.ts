@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Pet, PetsService } from '../../services/pets.service';
+import { MedicalRecord, PetsService } from '../../services/pets.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pets',
@@ -9,12 +10,22 @@ import { AuthService } from '../../services/auth.service';
 })
 export class PetsComponent implements OnInit {
 
-  pets: Pet[] = [];
+  pets: MedicalRecord[] = [];
 
-  constructor( private petsService: PetsService, public auth: AuthService ) { }
+  constructor( private petsService: PetsService, private router: Router ,public auth: AuthService ) { }
 
   ngOnInit() {
-    this.pets = this.petsService.getPets();
+    //this.pets = this.petsService.getPets();
+    this.petsService.getRecords().subscribe(resp => {
+      console.log(resp);
+      this.pets = resp;
+    });
+  }
+
+  openPet(id: number){
+    console.log(id);
+    
+    this.router.navigate(['/petRecord',id]);
   }
 
 }

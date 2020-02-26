@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pet-card',
@@ -8,10 +9,19 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 export class PetCardComponent implements OnInit {
 
   @Input() pet: any = {};
+  @Input() index: string;
 
-  constructor() { }
+  @Output() petSelected: EventEmitter<string>;
+
+  constructor(private router: Router) {
+    this.petSelected = new EventEmitter();
+  }
 
   ngOnInit() {
+  }
+
+  openPet(){
+    this.router.navigate(['/petRecord', this.index]);
   }
 
 }
