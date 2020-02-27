@@ -26,6 +26,7 @@ export class PetsService {
         address: 'colombia',
         phone: 123456
       },
+      sterilized: true,
       id: '1'
     },
     {
@@ -45,6 +46,7 @@ export class PetsService {
         address: 'colombia',
         phone: 1234567
       },
+      sterilized: false,
       id: '2'
     },
     {
@@ -64,6 +66,7 @@ export class PetsService {
         address: 'colombia',
         phone: 1234567
       },
+      sterilized: true,
       id: '3'
     }
   ];
@@ -129,5 +132,6 @@ export interface MedicalRecord {
     address: string;
     phone: number;
   };
+  sterilized: boolean;
   id: string;
 }

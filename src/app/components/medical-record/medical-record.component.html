@@ -1,8 +1,8 @@
-<h4>Formulario <small>Nueva historia médica</small></h4>
+<h4 class="title">Nueva historia médica</h4>
 <hr />
 <form [formGroup]="medicalRecordForm" (ngSubmit)="saveChanges()">
   <div formGroupName="petData">
-    <h4>Datos de la mascota</h4>
+    <h5>Datos de la mascota</h5>
     <div class="info-block">
       <div class="info-item">
         <div>Nombre mascota</div>
@@ -33,7 +33,7 @@
   </div>
 
   <div formGroupName="ownerData">
-    <h4>Datos del dueño</h4>
+    <h5>Datos del dueño</h5>
     <div class="info-block">
       <div class="info-item">
         <div>Nombre</div>
@@ -59,15 +59,6 @@
           <input class="form-control" type="text" placeholder="Apellido" formControlName="ownerLastName" />
         </div>
       </div>
-    </div>
-
-    <div class="options-container">
-      <button class="btn btn-outline-primary">
-        Cancelar
-      </button>
-      <button type="submit" class="btn btn-outline-primary">
-        Guardar
-      </button>
     </div>
   </div>
 </form>

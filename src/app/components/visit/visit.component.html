@@ -1,0 +1,86 @@
+<!--<h5>Formulario <small>Nueva visita</small></h5>
+<hr />-->
+<form [formGroup]="visitForm" (ngSubmit)="saveChanges()">
+  <div>
+    <h5>Datos de la visita</h5>
+    <div class="info-block">
+      <div class="info-item">
+        <div>Fecha</div>
+        <div>
+          <input class="form-control " type="date" placeholder="Fecha" formControlName="date" />
+          <div class="error" *ngIf="visitForm.get('date').invalid && visitForm.get('date').touched">
+            Por favor ingrese la fecha
+          </div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div>Motivo de la consulta</div>
+        <div>
+          <input class="form-control " type="text" placeholder="Motivo consulta" formControlName="cause" />
+          <div class="error" *ngIf="visitForm.get('cause').invalid && visitForm.get('cause').touched">
+            Por favor ingrese el motivo de la consulta
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div formGroupName="patientHistory">
+    <h5>Historia del paciente</h5>
+    <div class="info-block">
+      <div class="info-item">
+        <div>Vacunas</div>
+        <div>
+          <input type="text" class="form-control" placeholder="Vacunas" formControlName="vaccines" />
+          <div
+            class="error"
+            *ngIf="visitForm.get('patientHistory.vaccines').invalid && visitForm.get('patientHistory.vaccines').touched"
+          >
+            Por favor ingrese las vacunas
+          </div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div>Última desparasitación</div>
+        <div>
+          <input type="date" class="form-control" placeholder="Desparasitación" formControlName="lastDeworming" />
+          <div
+            class="error"
+            *ngIf="
+              visitForm.get('patientHistory.lastDeworming').invalid &&
+              visitForm.get('patientHistory.lastDeworming').touched
+            "
+          >
+            Por favor ingrese la última desparasitación
+          </div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div>Cirugías</div>
+        <div>
+          <input type="date" class="form-control" placeholder="Cirugías" formControlName="surgeries" />
+          <div
+            class="error"
+            *ngIf="
+              visitForm.get('patientHistory.surgeries').invalid && visitForm.get('patientHistory.surgeries').touched
+            "
+          >
+            Por favor ingrese las cirugías que ha tenido
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-item">
+    <div>Veterinario</div>
+    <div>
+      <input type="text" class="form-control" placeholder="Veterinario" formControlName="veterinary" />
+      <div class="error" *ngIf="visitForm.get('veterinary').invalid && visitForm.get('veterinary').touched">
+          Por favor ingrese el médico veterinario
+      </div>
+    </div>
+  </div>
+</form>

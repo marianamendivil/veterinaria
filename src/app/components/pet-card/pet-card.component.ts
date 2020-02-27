@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class PetCardComponent implements OnInit {
 
   @Input() pet: any = {};
-  @Input() index: string;
+  @Input() id: string;
 
   @Output() petSelected: EventEmitter<string>;
 
@@ -21,7 +21,11 @@ export class PetCardComponent implements OnInit {
   }
 
   openPet(){
-    this.router.navigate(['/petRecord', this.index]);
+    console.log(this.id);
+    this.router.navigate(['/petRecord', this.id]);
   }
 
+  openVisit(){
+    this.router.navigate(['/visit']);
+  }
 }

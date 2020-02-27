@@ -11,6 +11,8 @@ import { PetsComponent } from './components/pets/pets.component';
 import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { MedicalRecordComponent } from './components/medical-record/medical-record.component';
 import { PetRecordComponent } from './components/pet-record/pet-record.component';
+import { VisitComponent } from './components/visit/visit.component';
+import { MedicalRecordsComponent } from './components/medical-records/medical-records.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { PetRecordComponent } from './components/pet-record/pet-record.component
     PetsComponent,
     PetCardComponent,
     MedicalRecordComponent,
-    PetRecordComponent
+    PetRecordComponent,
+    VisitComponent,
+    MedicalRecordsComponent
   ],
   imports: [
     BrowserModule,

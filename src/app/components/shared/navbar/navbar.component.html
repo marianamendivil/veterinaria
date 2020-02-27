@@ -9,7 +9,7 @@
           <a (click)="auth.login()" class="nav-link" href="">Log In</a>
         </li>
         <li class="nav-item" *ngIf="auth.loggedIn">
-          <a [routerLink]="['/medicalRecord']" class="nav-link">Nueva Historia Clínica</a>
+          <a [routerLink]="['/medicalRecords']" class="nav-link">Nueva Historia Clínica</a>
         </li>
         <li class="nav-item" *ngIf="auth.loggedIn">
           <a (click)="auth.logout()" class="nav-link" href="">Log Out</a>
