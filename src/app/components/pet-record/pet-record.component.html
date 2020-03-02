@@ -1,1 +1,31 @@
-<h1 class="animated fadeIn">hola {{pet.petData.name}}</h1>
+<!--<app-medical-record (medicalRecordFormChanged)="setMedicalRecordForm($event)"></app-medical-record>
+<app-visit (visitFormChanged)="setVisitForm($event)"></app-visit>-->
+<div class="animated fadeIn" *ngIf="pet && pet.petData">
+  <h5>Datos de la mascota</h5>
+  <div class="info-block">
+    <div class="info-item">
+      <label>Nombre mascota</label>
+      <div>{{ pet.petData.name }}</div>
+    </div>
+    <div class="info-item">
+      <label>Edad</label>
+      <div>{{ pet.petData.age }} años</div>
+    </div>
+  </div>
+  <h5>Datos del dueño</h5>
+  <div class="info-block">
+    <div class="info-item">
+      <label>Nombre</label>
+      <div>{{ pet.ownerData.ownerName }} {{ pet.ownerData.ownerLastName }}</div>
+    </div>
+    <h5>Datos de las visitas</h5>
+    <div class="info-block">
+      <div class="info-item">
+        <label>Fechas</label>
+        <div>{{ pet.visits.date }}</div>
+        <div *ngFor="let visit of visits">{{visit.id.date}}</div>
+      </div>
+    </div>
+  </div>
+  <button routerLinkActive="router-link-active"  (click)="deletePet()" class="btn btn-outline-danger">Eliminar mascota</button>
+</div>

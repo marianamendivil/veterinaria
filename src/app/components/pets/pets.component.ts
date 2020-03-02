@@ -24,7 +24,7 @@ export class PetsComponent implements OnInit {
 
   openPet(id: number){
     console.log(id);
-    
+
     this.router.navigate(['/petRecord',id]);
   }
 

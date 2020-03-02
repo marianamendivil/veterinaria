@@ -7,7 +7,13 @@
       <div class="info-item">
         <div>Nombre mascota</div>
         <div>
-          <input class="form-control " type="text" placeholder="Nombre" formControlName="name" />
+          <input
+            class="form-control "
+            type="text"
+            placeholder="Nombre"
+            formControlName="name"
+            (input)="setMedicalRecordForm()"
+          />
           <div
             class="error"
             *ngIf="medicalRecordForm.get('petData.name').invalid && medicalRecordForm.get('petData.name').touched"
@@ -26,6 +32,79 @@
             *ngIf="medicalRecordForm.get('petData.age').invalid && medicalRecordForm.get('petData.age').touched"
           >
             Por favor ingrese la edad
+          </div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <label>Especie</label>
+        <div>
+          <input class="form-control" type="text" placeholder="Especie" formControlName="species" />
+          <div
+            class="error"
+            *ngIf="medicalRecordForm.get('petData.species').invalid && medicalRecordForm.get('petData.species').touched"
+          >
+            Por favor ingrese la especie
+          </div>
+        </div>
+      </div>
+      <div class="info-item">
+        <label>Raza</label>
+        <div>
+          <input class="form-control" type="text" placeholder="Raza" formControlName="race" />
+          <div
+            class="error"
+            *ngIf="medicalRecordForm.get('petData.race').invalid && medicalRecordForm.get('petData.race').touched"
+          >
+            Por favor ingrese la raza
+          </div>
+        </div>
+      </div>
+      <div class="info-item">
+        <label>Género</label>
+        <div>
+          <input class="form-control" type="text" placeholder="Género" formControlName="gender" />
+          <div
+            class="error"
+            *ngIf="medicalRecordForm.get('petData.gender').invalid && medicalRecordForm.get('petData.gender').touched"
+          >
+            Por favor ingrese el género
+          </div>
+        </div>
+      </div>
+      <div class="info-item">
+        <label>Peso</label>
+        <div>
+          <input class="form-control" type="number" placeholder="Peso" formControlName="weight" />
+          <div
+            class="error"
+            *ngIf="medicalRecordForm.get('petData.weight').invalid && medicalRecordForm.get('petData.weight').touched"
+          >
+            Por favor ingrese el peso
+          </div>
+        </div>
+      </div>
+      <div class="info-item">
+        <label>Color</label>
+        <div>
+          <input class="form-control" type="text" placeholder="Color" formControlName="color" />
+          <div
+            class="error"
+            *ngIf="medicalRecordForm.get('petData.color').invalid && medicalRecordForm.get('petData.color').touched"
+          >
+            Por favor ingrese el color
+          </div>
+        </div>
+      </div>
+      <div class="info-item">
+        <label>Particularidades</label>
+        <div>
+          <input class="form-control" type="text" placeholder="Particularidades" formControlName="particularities" />
+          <div
+            class="error"
+            *ngIf="medicalRecordForm.get('petData.particularities').invalid && medicalRecordForm.get('petData.particularities').touched"
+          >
+            Por favor ingrese las particularidades
           </div>
         </div>
       </div>
@@ -57,7 +136,62 @@
         <div>Apellido</div>
         <div>
           <input class="form-control" type="text" placeholder="Apellido" formControlName="ownerLastName" />
+          <div
+            class="error"
+            *ngIf="
+              medicalRecordForm.get('ownerData.ownerLastName').errors?.required &&
+              medicalRecordForm.get('ownerData.ownerLastName').touched
+            "
+          >
+            Por favor ingrese el apellido
+          </div>
         </div>
+      </div>
+      <div class="info-item">
+        <div>Dirección</div>
+        <div>
+          <input class="form-control" type="text" placeholder="Dirección" formControlName="address" />
+          <div
+            class="error"
+            *ngIf="
+              medicalRecordForm.get('ownerData.address').errors?.required &&
+              medicalRecordForm.get('ownerData.address').touched
+            "
+          >
+            Por favor ingrese la dirección
+          </div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div>Teléfono</div>
+        <div>
+          <input class="form-control" type="number" placeholder="Teléfono" formControlName="phone" />
+          <div
+            class="error"
+            *ngIf="
+              medicalRecordForm.get('ownerData.phone').errors?.required &&
+              medicalRecordForm.get('ownerData.phone').touched
+            "
+          >
+            Por favor ingrese el teléfono
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-item">
+    <div>Esterilizado</div>
+    <div>
+      <input class="form-control" type="text" placeholder="Esterilizado" formControlName="sterilized" />
+      <div
+        class="error"
+        *ngIf="
+          medicalRecordForm.get('sterilized').errors?.required &&
+          medicalRecordForm.get('sterilized').touched
+        "
+      >
+        Por favor marque si está esterilizado
       </div>
     </div>
   </div>

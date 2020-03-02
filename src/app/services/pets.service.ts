@@ -7,69 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class PetsService {
   private url = 'https://veterinaria-de1d4.firebaseio.com';
-
-  private pets: MedicalRecord[] = [
-    {
-      petData: {
-        name: 'Sussie',
-        age: 10,
-        species: 'canino',
-        race: 'schnauzer mini',
-        gender: 'mujer',
-        weight: 10,
-        color: 'blanca',
-        particularities: 'gorgeous and pretty :3'
-      },
-      ownerData: {
-        ownerName: 'Gloria',
-        ownerLastName: 'Dque',
-        address: 'colombia',
-        phone: 123456
-      },
-      sterilized: true,
-      id: '1'
-    },
-    {
-      petData: {
-        name: 'Princesa',
-        age: 9,
-        species: 'felino',
-        race: 'gatita atigrada',
-        gender: 'mujer',
-        weight: 7,
-        color: 'atigrada grisesita',
-        particularities: 'hermosita'
-      },
-      ownerData: {
-        ownerName: 'Mariana',
-        ownerLastName: 'Mendivil',
-        address: 'colombia',
-        phone: 1234567
-      },
-      sterilized: false,
-      id: '2'
-    },
-    {
-      petData: {
-        name: 'Tony',
-        age: 11,
-        species: 'canino',
-        race: 'french poodle',
-        gender: 'hombre',
-        weight: 8,
-        color: 'negro',
-        particularities: 'diabetes, ciego'
-      },
-      ownerData: {
-        ownerName: 'Mariana',
-        ownerLastName: 'Mendivil',
-        address: 'colombia',
-        phone: 1234567
-      },
-      sterilized: true,
-      id: '3'
-    }
-  ];
+  private photoUrl = 'https://firebasestorage.googleapis.com/v0/b/veterinaria-de1d4.appspot.com/o'
 
   constructor(private http: HttpClient) {}
 
@@ -82,20 +20,33 @@ export class PetsService {
     );
   }
 
+  deletePet(id: string) {
+    return this.http.delete(`${this.url}/historiaClinica/${id}.json`);
+  }
+
+  addVisit(visit: MedicalRecord, id: string) {
+    return this.http.post(`${this.url}/historiaClinica/${id}/visits.json`, visit).pipe(
+      map((resp: any) => {
+        visit.id = resp.name;
+        return visit;
+      })
+    );
+  }
+
   updateRecord(medicalRecord: MedicalRecord) {
     return this.http.put(`${this.url}/historiaClinica/${medicalRecord.id}.json`, medicalRecord);
   }
-
-  /*getPets() {
-    return this.pets;
-  }*/
 
   getRecords() {
     return this.http.get(`${this.url}/historiaClinica.json`).pipe(map(this.makeArray));
   }
 
   getRecord(id: string) {
-    return this.http.get(`${this.url}/historiaClinica.json`).pipe(map(this.makeArray))[id];
+    return this.http.get(`${this.url}/historiaClinica/${id}.json`);
+  }
+
+  getPhoto() {
+    //return this.http.get(`${this.photoUrl}/pepe.jpg?alt=media&token=0dde4633-b2ce-4b34-9334-67d6a1d9184f`);
   }
 
   private makeArray(medicalRecordsObj: object) {
@@ -109,8 +60,8 @@ export class PetsService {
       const record: MedicalRecord = medicalRecordsObj[key];
       record.id = key;
       medicalRecords.push(record);
-    })
-    
+    });
+
     return medicalRecords;
   }
 }
@@ -131,6 +82,16 @@ export interface MedicalRecord {
     ownerLastName: string;
     address: string;
     phone: number;
+  };
+  visits: {
+    date: Date;
+    cause: string;
+    patientHistory: {
+      vaccines: string;
+      lastDeworming: string;
+      surgeries: string;
+    };
+    veterinary: string;
   };
   sterilized: boolean;
   id: string;

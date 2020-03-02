@@ -12,8 +12,8 @@ export class AuthService {
   // Create an observable of Auth0 instance of client
   auth0Client$ = (from(
     createAuth0Client({
-      domain: "marianamendivil.auth0.com",
-      client_id: "YGg6Yp0fSbRxZr7A2APG1ebVENNpuk05",
+      domain: 'marianamendivil.auth0.com',
+      client_id: 'YGg6Yp0fSbRxZr7A2APG1ebVENNpuk05',
       redirect_uri: `${window.location.origin}`
     })
   ) as Observable<Auth0Client>).pipe(
@@ -26,7 +26,7 @@ export class AuthService {
   // from: Convert that resulting promise into an observable
   isAuthenticated$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.isAuthenticated())),
-    tap(res => this.loggedIn = res)
+    tap(res => (this.loggedIn = res))
   );
   handleRedirectCallback$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
@@ -97,10 +97,7 @@ export class AuthService {
         }),
         concatMap(() => {
           // Redirect callback complete; get user and login status
-          return combineLatest([
-            this.getUser$(),
-            this.isAuthenticated$
-          ]);
+          return combineLatest([this.getUser$(), this.isAuthenticated$]);
         })
       );
       // Subscribe to authentication completion observable
@@ -117,10 +114,9 @@ export class AuthService {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log out
       client.logout({
-        client_id: "YGg6Yp0fSbRxZr7A2APG1ebVENNpuk05",
+        client_id: 'YGg6Yp0fSbRxZr7A2APG1ebVENNpuk05',
         returnTo: `${window.location.origin}`
       });
     });
   }
-
 }

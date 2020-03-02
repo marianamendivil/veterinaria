@@ -1,86 +1,117 @@
-<!--<h5>Formulario <small>Nueva visita</small></h5>
-<hr />-->
-<form [formGroup]="visitForm" (ngSubmit)="saveChanges()">
-  <div>
-    <h5>Datos de la visita</h5>
-    <div class="info-block">
-      <div class="info-item">
-        <div>Fecha</div>
-        <div>
-          <input class="form-control " type="date" placeholder="Fecha" formControlName="date" />
-          <div class="error" *ngIf="visitForm.get('date').invalid && visitForm.get('date').touched">
-            Por favor ingrese la fecha
-          </div>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <div>Motivo de la consulta</div>
-        <div>
-          <input class="form-control " type="text" placeholder="Motivo consulta" formControlName="cause" />
-          <div class="error" *ngIf="visitForm.get('cause').invalid && visitForm.get('cause').touched">
-            Por favor ingrese el motivo de la consulta
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div formGroupName="patientHistory">
-    <h5>Historia del paciente</h5>
-    <div class="info-block">
-      <div class="info-item">
-        <div>Vacunas</div>
-        <div>
-          <input type="text" class="form-control" placeholder="Vacunas" formControlName="vaccines" />
-          <div
-            class="error"
-            *ngIf="visitForm.get('patientHistory.vaccines').invalid && visitForm.get('patientHistory.vaccines').touched"
-          >
-            Por favor ingrese las vacunas
-          </div>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <div>Última desparasitación</div>
-        <div>
-          <input type="date" class="form-control" placeholder="Desparasitación" formControlName="lastDeworming" />
-          <div
-            class="error"
-            *ngIf="
-              visitForm.get('patientHistory.lastDeworming').invalid &&
-              visitForm.get('patientHistory.lastDeworming').touched
-            "
-          >
-            Por favor ingrese la última desparasitación
-          </div>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <div>Cirugías</div>
-        <div>
-          <input type="date" class="form-control" placeholder="Cirugías" formControlName="surgeries" />
-          <div
-            class="error"
-            *ngIf="
-              visitForm.get('patientHistory.surgeries').invalid && visitForm.get('patientHistory.surgeries').touched
-            "
-          >
-            Por favor ingrese las cirugías que ha tenido
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="info-item">
-    <div>Veterinario</div>
+<h4 class="title" *ngIf="newVisit">Nueva visita</h4>
+<hr *ngIf="newVisit" />
+<form [formGroup]="visitForm">
+  <div formGroupName="visits">
     <div>
-      <input type="text" class="form-control" placeholder="Veterinario" formControlName="veterinary" />
-      <div class="error" *ngIf="visitForm.get('veterinary').invalid && visitForm.get('veterinary').touched">
-          Por favor ingrese el médico veterinario
+      <h5>Datos de la visita</h5>
+      <div class="info-block">
+        <div class="info-item">
+          <div>Fecha</div>
+          <div>
+            <input
+              class="form-control "
+              type="date"
+              placeholder="Fecha"
+              formControlName="date"
+              (input)="setVisitForm()"
+            />
+            <div class="error" *ngIf="visitForm.get('visits.date').invalid && visitForm.get('visits.date').touched">
+              Por favor ingrese la fecha
+            </div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div>Motivo de la consulta</div>
+          <div>
+            <input class="form-control " type="text" placeholder="Motivo consulta" formControlName="cause" />
+            <div class="error" *ngIf="visitForm.get('visits.cause').invalid && visitForm.get('visits.cause').touched">
+              Por favor ingrese el motivo de la consulta
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div formGroupName="patientHistory">
+      <h5>Historia del paciente</h5>
+      <div class="info-block">
+        <div class="info-item">
+          <div>Vacunas</div>
+          <div>
+            <input type="text" class="form-control" placeholder="Vacunas" formControlName="vaccines" />
+            <div
+              class="error"
+              *ngIf="visitForm.get('visits.patientHistory.vaccines').invalid && visitForm.get('visits.patientHistory.vaccines').touched"
+            >
+              Por favor ingrese las vacunas
+            </div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div>Última desparasitación</div>
+          <div>
+            <input type="date" class="form-control" placeholder="Desparasitación" formControlName="lastDeworming" />
+            <div
+              class="error"
+              *ngIf="
+                visitForm.get('visits.patientHistory.lastDeworming').invalid &&
+                visitForm.get('visits.patientHistory.lastDeworming').touched
+              "
+            >
+              Por favor ingrese la última desparasitación
+            </div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div>Cirugías</div>
+          <div>
+            <input type="text" class="form-control" placeholder="Cirugías" formControlName="surgeries" />
+            <div
+              class="error"
+              *ngIf="
+                visitForm.get('visits.patientHistory.surgeries').invalid && visitForm.get('visits.patientHistory.surgeries').touched
+              "
+            >
+              Por favor ingrese las cirugías que ha tenido
+            </div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div>Tratamiento</div>
+          <div>
+            <input type="text" class="form-control" placeholder="Tratamiento" formControlName="treatment" />
+            <div
+              class="error"
+              *ngIf="
+                visitForm.get('visits.patientHistory.treatment').invalid && visitForm.get('visits.patientHistory.treatment').touched
+              "
+            >
+              Por favor ingrese el tratamiento a seguir
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info-item">
+      <div>Veterinario</div>
+      <div>
+        <input type="text" class="form-control" placeholder="Veterinario" formControlName="veterinary" />
+        <div class="error" *ngIf="visitForm.get('visits.veterinary').invalid && visitForm.get('visits.veterinary').touched">
+          Por favor ingrese el médico veterinario
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="newVisit" class="options-container">
+    <button [routerLink]="['/pets']" routerLinkActive="router-link-active" class="btn btn-outline-primary">
+      Cancelar
+    </button>
+    <button (click)="saveVisitChanges()" type="submit" class="btn btn-outline-primary" [disabled]="visitForm.invalid">
+      Guardar
+    </button>
   </div>
 </form>
