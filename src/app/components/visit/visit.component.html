@@ -1,5 +1,5 @@
-<h4 class="title" *ngIf="newVisit">Nueva visita</h4>
-<hr *ngIf="newVisit" />
+<h4 class="title" *ngIf="!newVisit">Nueva visita</h4>
+<hr />
 <form [formGroup]="visitForm">
   <div formGroupName="visits">
     <div>
@@ -106,7 +106,7 @@
     </div>
   </div>
 
-  <div *ngIf="newVisit" class="options-container">
+  <div *ngIf="!newVisit" class="options-container">
     <button [routerLink]="['/pets']" routerLinkActive="router-link-active" class="btn btn-outline-primary">
       Cancelar
     </button>

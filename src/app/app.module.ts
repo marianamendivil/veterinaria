@@ -7,31 +7,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { PetsComponent } from './components/pets/pets.component';
-import { PetCardComponent } from './components/pet-card/pet-card.component';
-import { MedicalRecordComponent } from './components/medical-record/medical-record.component';
-import { PetRecordComponent } from './components/pet-record/pet-record.component';
-import { VisitComponent } from './components/visit/visit.component';
-import { NewPetComponent } from './components/new-pet/new-pet.component';
+import { PetsModule } from './pets-module/pets.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent,
-    PetsComponent,
-    PetCardComponent,
-    MedicalRecordComponent,
-    PetRecordComponent,
-    VisitComponent,
-    NewPetComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PetsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -67,6 +67,22 @@ export class PetsService {
 }
 
 export interface MedicalRecord {
+  petData: PetData;
+  ownerData: OwnerData;
+  visits: Visits;
+  id: string;
+}
+
+export interface OwnerData {
+  ownerData: {
+    ownerName: string;
+    ownerLastName: string;
+    address: string;
+    phone: number;
+  };
+}
+
+export interface PetData {
   petData: {
     name: string;
     age: number;
@@ -76,13 +92,11 @@ export interface MedicalRecord {
     weight: number;
     color: string;
     particularities: string;
+    sterilized: boolean;
   };
-  ownerData: {
-    ownerName: string;
-    ownerLastName: string;
-    address: string;
-    phone: number;
-  };
+}
+
+export interface Visits {
   visits: {
     date: Date;
     cause: string;
@@ -93,6 +107,4 @@ export interface MedicalRecord {
     };
     veterinary: string;
   };
-  sterilized: boolean;
-  id: string;
 }

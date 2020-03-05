@@ -12,7 +12,7 @@
               <a [routerLink]="['/pets']" class="nav-link">Mascotas</a>
             </li>
         <li class="nav-item" *ngIf="auth.loggedIn">
-          <a [routerLink]="['/newPet']" class="nav-link">Nueva Historia Clínica</a>
+          <a [routerLink]="['/pets/new']" class="nav-link">Nueva Historia Clínica</a>
         </li>
         <li class="nav-item" *ngIf="auth.loggedIn">
           <a (click)="auth.logout()" class="nav-link" href="">Log Out</a>

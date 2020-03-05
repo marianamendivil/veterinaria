@@ -28,7 +28,7 @@ export class PetCardComponent implements OnInit {
     console.log(this.pet);
     console.log(this.petSelected);
 
-    this.router.navigate(['/petRecord', this.pet.id]);
+    this.router.navigate(['/pets', this.pet.id]);
   }
 
   openVisit(){

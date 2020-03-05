@@ -18,8 +18,16 @@ export class VisitComponent implements OnInit {
 
   constructor(private router: Router, private petsService: PetsService, private activatedRoute: ActivatedRoute) {
     this.petId = this.activatedRoute.snapshot.paramMap.get('id');
-
     this.visitFormChanged = new EventEmitter();
+  }
+
+  ngOnInit() {
+    let url = this.router.url;
+    console.log(url);
+    if (url == '/pets/new') {
+      this.newVisit = true;
+    }
+
     this.visitForm = new FormGroup({
       visits: new FormGroup({
         date: new FormControl('', Validators.required),
@@ -34,15 +42,6 @@ export class VisitComponent implements OnInit {
         visitId: new FormControl(this.petId)
       })
     });
-  }
-
-  ngOnInit() {
-    let url = this.router.url;
-    console.log(url);
-    if (url != '/newPet') {
-      this.newVisit = true;
-    }
-
   }
 
   setVisitForm() {

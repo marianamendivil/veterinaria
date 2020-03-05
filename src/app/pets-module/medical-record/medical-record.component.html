@@ -108,6 +108,21 @@
           </div>
         </div>
       </div>
+      <div class="info-item">
+        <div>Esterilizado</div>
+        <div>
+          <input class="form-control" type="text" placeholder="Esterilizado" formControlName="sterilized" />
+          <div
+            class="error"
+            *ngIf="
+              medicalRecordForm.get('petData.sterilized').errors?.required &&
+              medicalRecordForm.get('petData.sterilized').touched
+            "
+          >
+            Por favor marque si está esterilizado
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -176,22 +191,6 @@
             Por favor ingrese el teléfono
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="info-item">
-    <div>Esterilizado</div>
-    <div>
-      <input class="form-control" type="text" placeholder="Esterilizado" formControlName="sterilized" />
-      <div
-        class="error"
-        *ngIf="
-          medicalRecordForm.get('sterilized').errors?.required &&
-          medicalRecordForm.get('sterilized').touched
-        "
-      >
-        Por favor marque si está esterilizado
       </div>
     </div>
   </div>
