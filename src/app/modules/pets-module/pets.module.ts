@@ -3,7 +3,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { PetsComponent } from './pet-list/pets.component';
+import { PetsComponent } from './pet-list/pet-list.component';
 import { PetCardComponent } from './pet-card/pet-card.component';
 import { MedicalRecordComponent } from './medical-record/medical-record.component';
 import { PetRecordComponent } from './pet-record/pet-record.component';

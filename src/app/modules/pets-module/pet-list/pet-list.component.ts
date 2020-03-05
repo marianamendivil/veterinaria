@@ -4,9 +4,9 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-pets',
-  templateUrl: './pets.component.html',
-  styleUrls: ['./pets.component.css']
+  selector: 'app-pet-list',
+  templateUrl: './pet-list.component.html',
+  styleUrls: ['./pet-list.component.css']
 })
 export class PetsComponent implements OnInit {
 

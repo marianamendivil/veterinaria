@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { PetsComponent } from './pets-module/pet-list/pets.component';
+import { PetsComponent } from './pets-module/pet-list/pet-list.component';
 import { PetRecordComponent } from './pets-module/pet-record/pet-record.component';
 import { VisitComponent } from './components/visit/visit.component';
 import { AuthGuard } from './services/auth.guard';
