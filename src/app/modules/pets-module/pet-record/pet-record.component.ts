@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PetsService } from '../../services/pets.service';
 import Swal from 'sweetalert2';
 import { FormGroup } from '@angular/forms';
+import { PetsService } from 'src/app/services/pets.service';
 
 @Component({
   selector: 'app-pet-record',

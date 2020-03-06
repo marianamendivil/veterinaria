@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MedicalRecord, PetsService } from '../../services/pets.service';
-import { AuthService } from '../../services/auth.service';
+import { PetsService, MedicalRecord } from 'src/app/services/pets.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-pet-list',

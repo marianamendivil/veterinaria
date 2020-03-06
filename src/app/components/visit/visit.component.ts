@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PetsService, MedicalRecord } from 'src/app/services/pets.service';
+import { PetsService } from 'src/app/services/pets.service';
 import Swal from 'sweetalert2';
 
 @Component({
