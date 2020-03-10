@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FormGroup } from '@angular/forms';
@@ -10,10 +10,12 @@ import { PetsService } from 'src/app/services/pets.service';
   styleUrls: ['./pet-record.component.css']
 })
 export class PetRecordComponent implements OnInit {
+
+  @Input() visitForm: FormGroup;
+  @Input() medicalRecordForm: FormGroup;
+
   pet: any = {};
   petId: string;
-  medicalRecordForm: FormGroup;
-  visitForm: FormGroup;
 
   constructor(private activatedRoute: ActivatedRoute, private petsService: PetsService, private router: Router) {}
 

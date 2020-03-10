@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { PetsService } from 'src/app/services/pets.service';
 import Swal from 'sweetalert2';
@@ -9,14 +9,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./new-pet.component.css']
 })
 export class NewPetComponent implements OnInit {
-  medicalRecordForm: FormGroup;
-  visitForm: FormGroup;
+  @Input() medicalRecordForm: FormGroup;
+  @Input() visitForm: FormGroup;
 
   constructor(private petsService: PetsService) {}
 
   ngOnInit() {}
 
-  setMedicalRecordForm(medical) {
+  /*setMedicalRecordForm(medical) {
     console.log(medical);
     this.medicalRecordForm = medical;
   }
@@ -24,7 +24,7 @@ export class NewPetComponent implements OnInit {
   setVisitForm(visit) {
     console.log(visit);
     this.visitForm = visit;
-  }
+  }*/
 
   saveChanges() {
     const newPet = Object.assign(this.medicalRecordForm.value, this.visitForm.value);

@@ -5,6 +5,7 @@ import { VisitComponent } from './components/visit/visit.component';
 import { AuthGuard } from './services/auth.guard';
 import { PetsRoutingModule } from './modules/pets-module/pets-routing.module';
 import { PetsModule } from './modules/pets-module/pets.module';
+import { BackButtonComponent } from './components/shared/back-button/back-button.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

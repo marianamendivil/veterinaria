@@ -7,12 +7,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./medical-record.component.css']
 })
 export class MedicalRecordComponent implements OnInit{
-  @Output() medicalRecordFormChanged: EventEmitter<FormGroup> = new EventEmitter();
+  //@Output() medicalRecordFormChanged: EventEmitter<FormGroup> = new EventEmitter();
   medicalRecordForm: FormGroup;
 
   constructor() {
   }
-  
+
   ngOnInit(){
     this.medicalRecordForm = new FormGroup({
       petData: new FormGroup({
@@ -36,6 +36,6 @@ export class MedicalRecordComponent implements OnInit{
   }
 
   setMedicalRecordForm() {
-    this.medicalRecordFormChanged.emit(this.medicalRecordForm);
+    //this.medicalRecordFormChanged.emit(this.medicalRecordForm);
   }
 }

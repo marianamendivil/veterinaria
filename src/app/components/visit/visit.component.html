@@ -13,7 +13,6 @@
               type="date"
               placeholder="Fecha"
               formControlName="date"
-              (input)="setVisitForm()"
             />
             <div class="error" *ngIf="visitForm.get('visits.date').invalid && visitForm.get('visits.date').touched">
               Por favor ingrese la fecha

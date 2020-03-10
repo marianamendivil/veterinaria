@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./visit.component.css']
 })
 export class VisitComponent implements OnInit {
-  @Output() visitFormChanged: EventEmitter<FormGroup>;
+  //@Output() visitFormChanged: EventEmitter<FormGroup>;
   visitForm: FormGroup;
   newVisit = false;
   pet: any = {};
@@ -18,7 +18,7 @@ export class VisitComponent implements OnInit {
 
   constructor(private router: Router, private petsService: PetsService, private activatedRoute: ActivatedRoute) {
     this.petId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.visitFormChanged = new EventEmitter();
+    //this.visitFormChanged = new EventEmitter();
   }
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class VisitComponent implements OnInit {
   }
 
   setVisitForm() {
-    this.visitFormChanged.emit(this.visitForm);
+    //this.visitFormChanged.emit(this.visitForm);
   }
 
   saveVisitChanges() {
