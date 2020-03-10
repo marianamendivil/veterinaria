@@ -9,6 +9,7 @@ import { PetRecordComponent } from './pet-record/pet-record.component';
 import { NewPetComponent } from './new-pet/new-pet.component';
 import { VisitComponent } from 'src/app/components/visit/visit.component';
 import { CommonModule } from '@angular/common';
+import { BackButtonComponent } from 'src/app/components/shared/back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CommonModule } from '@angular/common';
     MedicalRecordComponent,
     PetRecordComponent,
     NewPetComponent,
-    VisitComponent
+    VisitComponent,
+    BackButtonComponent
   ],
   imports: [
       CommonModule,

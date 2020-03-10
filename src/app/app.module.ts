@@ -15,8 +15,7 @@ import { BackButtonComponent } from './components/shared/back-button/back-button
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent,
-    BackButtonComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

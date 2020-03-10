@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./back-button.component.css']
 })
 export class BackButtonComponent implements OnInit {
+  @Input() asdf = '/home';
   backButton = false;
 
   constructor(private router: ActivatedRoute) { }
@@ -21,6 +22,6 @@ export class BackButtonComponent implements OnInit {
     }*/
   }
 
-  faArrowAltCircleLeft = faArrowAltCircleLeft;
+  // faArrowAltCircleLeft = faArrowAltCircleLeft;
 
 }
