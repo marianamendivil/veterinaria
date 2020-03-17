@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PetsService } from 'src/app/services/pets.service';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./visit.component.css']
 })
 export class VisitComponent implements OnInit {
-  //@Output() visitFormChanged: EventEmitter<FormGroup>;
+  @Input() newPetForm: FormGroup;
   visitForm: FormGroup;
   newVisit = false;
   pet: any = {};
@@ -42,6 +42,9 @@ export class VisitComponent implements OnInit {
         visitId: new FormControl(this.petId)
       })
     });
+    if(this.newVisit){
+      this.newPetForm.addControl('visitForm', this.visitForm);
+    }
   }
 
   setVisitForm() {

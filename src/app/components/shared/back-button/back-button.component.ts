@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,20 +7,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./back-button.component.css']
 })
 export class BackButtonComponent implements OnInit {
-  @Input() asdf = '/home';
-  backButton = false;
+  @Input() back = '/home';
 
-  constructor(private router: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
-    let url = this.router.url;
-    console.log(url);
-
-    /*if (url == '/pets' |) {
-      this.backButton = true;
-    }*/
   }
-
-  // faArrowAltCircleLeft = faArrowAltCircleLeft;
 
 }

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class MedicalRecordComponent implements OnInit{
   //@Output() medicalRecordFormChanged: EventEmitter<FormGroup> = new EventEmitter();
+  @Input() newPetForm: FormGroup;
   medicalRecordForm: FormGroup;
 
   constructor() {
@@ -33,9 +34,6 @@ export class MedicalRecordComponent implements OnInit{
         phone: new FormControl('', Validators.required)
       }),
     });
-  }
-
-  setMedicalRecordForm() {
-    //this.medicalRecordFormChanged.emit(this.medicalRecordForm);
+    this.newPetForm.addControl('medicalRecordForm', this.medicalRecordForm);
   }
 }

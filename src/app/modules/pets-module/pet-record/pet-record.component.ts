@@ -32,7 +32,7 @@ export class PetRecordComponent implements OnInit {
   ngOnInit() {
     this.petId = this.activatedRoute.snapshot.paramMap.get('id');
 
-    if (this.petId !== 'newPet') {
+    if (this.petId !== 'new') {
       this.petsService.getRecord(this.petId).subscribe((resp: any) => {
         console.log(resp);
         this.pet = resp;

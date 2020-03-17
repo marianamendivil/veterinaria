@@ -9,13 +9,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { BackButtonComponent } from './components/shared/back-button/back-button.component';
+import { SearchComponent } from './components/shared/search/search.component';
+import { VisitListComponent } from './components/visit-list/visit-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    SearchComponent,
+    VisitListComponent
   ],
   imports: [
     BrowserModule,

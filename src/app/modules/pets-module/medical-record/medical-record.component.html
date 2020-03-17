@@ -1,6 +1,6 @@
 <h4 class="title">Nueva historia médica</h4>
 <hr />
-<form [formGroup]="medicalRecordForm" (ngSubmit)="saveChanges()">
+<form [formGroup]="medicalRecordForm">
   <div formGroupName="petData">
     <h5>Datos de la mascota</h5>
     <div class="info-block">
@@ -12,7 +12,6 @@
             type="text"
             placeholder="Nombre"
             formControlName="name"
-            (input)="setMedicalRecordForm()"
           />
           <div
             class="error"

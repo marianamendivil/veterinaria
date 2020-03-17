@@ -8,9 +8,12 @@
         <li class="nav-item" *ngIf="!auth.loggedIn">
           <a (click)="auth.login()" [routerLink]="['/pets']" class="nav-link" href="">Log In</a>
         </li>
-            <li class="nav-item" *ngIf="auth.loggedIn">
-              <a [routerLink]="['/pets']" class="nav-link">Mascotas</a>
-            </li>
+        <li class="nav-item" *ngIf="auth.loggedIn">
+          <a [routerLink]="['/pets']" class="nav-link">Mascotas</a>
+        </li>
+        <li class="nav-item" *ngIf="auth.loggedIn">
+          <a [routerLink]="['visits']" class="nav-link">Visitas</a>
+        </li>
         <li class="nav-item" *ngIf="auth.loggedIn">
           <a [routerLink]="['/pets/new']" class="nav-link">Nueva Historia Clínica</a>
         </li>
@@ -18,5 +21,8 @@
           <a (click)="auth.logout()" class="nav-link" href="">Log Out</a>
         </li>
       </ul>
+      <div class="col-3" *ngIf="auth.loggedIn">
+        <input #searchKeyword type="text" (keyup)="searchPets(searchKeyword.value)" class="form-control" placeholder="Buscar">
+      </div>
     </div>
 </nav>

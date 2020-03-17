@@ -13,8 +13,8 @@ export class PetsComponent implements OnInit {
   pets: MedicalRecord[] = [];
 
   constructor( private petsService: PetsService, private router: Router ,public auth: AuthService ) { }
-
   ngOnInit() {
+    //activatedroutes y me suscribo a los parametros del queryparams
     //this.pets = this.petsService.getPets();
     this.petsService.getRecords().subscribe(resp => {
       console.log(resp);

@@ -49,7 +49,6 @@ export class PetsService {
   getPhoto() {
     //return this.http.get(`${this.photoUrl}/pepe.jpg?alt=media&token=0dde4633-b2ce-4b34-9334-67d6a1d9184f`);
   }
-
   /*callOtherDomain() {
     if(this.invocation) {
       this.invocation.open('GET', this.photoUrl, true);

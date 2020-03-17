@@ -1,10 +1,11 @@
-<app-medical-record (medicalRecordFormChanged)="setMedicalRecordForm($event)"></app-medical-record>
-<app-visit (visitFormChanged)="setVisitForm($event)"></app-visit>
+<app-back-button back="/pets"></app-back-button>
+<app-medical-record [newPetForm]="newPet"></app-medical-record>
+<app-visit [newPetForm]="newPet"></app-visit>
 <div class="options-container">
   <button [routerLink]="['/pets']" class="btn btn-outline-primary">
     Cancelar
   </button>
-  <button (click)="saveChanges()" type="submit" class="btn btn-outline-primary" [disabled]="!medicalRecordForm || medicalRecordForm.invalid || !visitForm || visitForm.invalid">
+  <button (click)="saveChanges()" type="submit" class="btn btn-outline-primary" [disabled]="!newPet || newPet.invalid">
     Guardar
   </button>
 </div>
