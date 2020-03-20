@@ -2,7 +2,7 @@
 <h4 class="title" *ngIf="!newVisit">Nueva visita</h4>
 <hr />
 <form [formGroup]="visitForm">
-  <div formGroupName="visits">
+  <div>
     <div>
       <h5>Datos de la visita</h5>
       <div class="info-block">
@@ -15,7 +15,7 @@
               placeholder="Fecha"
               formControlName="date"
             />
-            <div class="error" *ngIf="visitForm.get('visits.date').invalid && visitForm.get('visits.date').touched">
+            <div class="error" *ngIf="visitForm.get('date').invalid && visitForm.get('date').touched">
               Por favor ingrese la fecha
             </div>
           </div>
@@ -25,7 +25,7 @@
           <div>Motivo de la consulta</div>
           <div>
             <input class="form-control " type="text" placeholder="Motivo consulta" formControlName="cause" />
-            <div class="error" *ngIf="visitForm.get('visits.cause').invalid && visitForm.get('visits.cause').touched">
+            <div class="error" *ngIf="visitForm.get('cause').invalid && visitForm.get('cause').touched">
               Por favor ingrese el motivo de la consulta
             </div>
           </div>
@@ -42,7 +42,7 @@
             <input type="text" class="form-control" placeholder="Vacunas" formControlName="vaccines" />
             <div
               class="error"
-              *ngIf="visitForm.get('visits.patientHistory.vaccines').invalid && visitForm.get('visits.patientHistory.vaccines').touched"
+              *ngIf="visitForm.get('patientHistory.vaccines').invalid && visitForm.get('patientHistory.vaccines').touched"
             >
               Por favor ingrese las vacunas
             </div>
@@ -56,8 +56,8 @@
             <div
               class="error"
               *ngIf="
-                visitForm.get('visits.patientHistory.lastDeworming').invalid &&
-                visitForm.get('visits.patientHistory.lastDeworming').touched
+                visitForm.get('patientHistory.lastDeworming').invalid &&
+                visitForm.get('patientHistory.lastDeworming').touched
               "
             >
               Por favor ingrese la última desparasitación
@@ -72,7 +72,7 @@
             <div
               class="error"
               *ngIf="
-                visitForm.get('visits.patientHistory.surgeries').invalid && visitForm.get('visits.patientHistory.surgeries').touched
+                visitForm.get('patientHistory.surgeries').invalid && visitForm.get('patientHistory.surgeries').touched
               "
             >
               Por favor ingrese las cirugías que ha tenido
@@ -86,7 +86,7 @@
             <div
               class="error"
               *ngIf="
-                visitForm.get('visits.patientHistory.treatment').invalid && visitForm.get('visits.patientHistory.treatment').touched
+                visitForm.get('patientHistory.treatment').invalid && visitForm.get('patientHistory.treatment').touched
               "
             >
               Por favor ingrese el tratamiento a seguir
@@ -99,7 +99,7 @@
       <div>Veterinario</div>
       <div>
         <input type="text" class="form-control" placeholder="Veterinario" formControlName="veterinary" />
-        <div class="error" *ngIf="visitForm.get('visits.veterinary').invalid && visitForm.get('visits.veterinary').touched">
+        <div class="error" *ngIf="visitForm.get('veterinary').invalid && visitForm.get('veterinary').touched">
           Por favor ingrese el médico veterinario
         </div>
       </div>

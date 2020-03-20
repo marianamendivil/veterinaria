@@ -8,11 +8,19 @@
         <li class="nav-item" *ngIf="!auth.loggedIn">
           <a (click)="auth.login()" [routerLink]="['/pets']" class="nav-link" href="">Log In</a>
         </li>
+        <div class="col-2" *ngIf="auth.loggedIn">
+          <select name="myselect" [(ngModel)]="optionSelected" class="form-control">
+            <option [value]="dropdownOption.value" *ngFor="let dropdownOption of dropdownOptions">{{dropdownOption.label}}</option>
+          </select>
+        </div>
+        <div class="col-3" *ngIf="auth.loggedIn">
+          <input #searchKeyword type="text" (keyup)="searchPets(searchKeyword.value, optionSelected)" class="form-control" placeholder="Buscar">
+        </div>
         <li class="nav-item" *ngIf="auth.loggedIn">
           <a [routerLink]="['/pets']" class="nav-link">Mascotas</a>
         </li>
         <li class="nav-item" *ngIf="auth.loggedIn">
-          <a [routerLink]="['visits']" class="nav-link">Visitas</a>
+          <a [routerLink]="['/visits']" class="nav-link">Visitas</a>
         </li>
         <li class="nav-item" *ngIf="auth.loggedIn">
           <a [routerLink]="['/pets/new']" class="nav-link">Nueva Historia Clínica</a>
@@ -21,8 +29,5 @@
           <a (click)="auth.logout()" class="nav-link" href="">Log Out</a>
         </li>
       </ul>
-      <div class="col-3" *ngIf="auth.loggedIn">
-        <input #searchKeyword type="text" (keyup)="searchPets(searchKeyword.value)" class="form-control" placeholder="Buscar">
-      </div>
     </div>
 </nav>

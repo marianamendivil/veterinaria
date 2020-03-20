@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { PetsService } from 'src/app/services/pets.service';
+import { PetsService, MedicalRecord, Visits } from 'src/app/services/pets.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -11,26 +11,25 @@ import { Router } from '@angular/router';
 })
 export class NewPetComponent implements OnInit {
   newPet: FormGroup;
-  //visitForm: FormGroup;
+  visitwithId: FormGroup;
+  medicalRecord: MedicalRecord;
+  visit: Visits;
+  petId: any;
 
   constructor(private petsService: PetsService, private router: Router) {}
 
   ngOnInit() {
-    this.newPet = new FormGroup({})
+    this.newPet = new FormGroup({});
+    this.visitwithId = new FormGroup({});
   }
-
-  /*setMedicalRecordForm(medical) {
-    console.log(medical);
-    this.medicalRecordForm = medical;
-  }
-
-  setVisitForm(visit) {
-    console.log(visit);
-    this.visitForm = visit;
-  }*/
 
   saveChanges() {
-    const newPet = Object.assign(this.newPet.get('medicalRecordForm').value, this.newPet.get('visitForm').value);
+    this.visit = this.newPet.get('visitForm').value;
+    this.medicalRecord = this.newPet.get('medicalRecordForm').value;
+    //const newPet = Object.assign(this.newPet.get('medicalRecordForm').value, this.newPet.get('visitForm').value);
+
+    console.log(this.visit);
+    console.log(this.medicalRecord);
 
     if (this.newPet.invalid) {
       console.log('Form no valido');
@@ -44,15 +43,23 @@ export class NewPetComponent implements OnInit {
     } else {
     }*/
 
-    this.petsService.addRecord(newPet).subscribe(resp => {
-      Swal.fire({
-        title: 'Registro guardado exitosamente',
-        text: this.newPet.get('medicalRecordForm').value.petData.name,
-        icon: 'success'
-      });
+    this.petsService.addRecord(this.medicalRecord).subscribe(resp => {
       console.log(resp);
-      this.newPet.reset();
-      this.router.navigate(['/pets']);
+      this.medicalRecord = resp;
+      this.petId = this.medicalRecord.id;
+      console.log(this.petId);
+      this.visit.petId = this.petId;
+      this.petsService.addVisit(this.visit).subscribe(resp => {
+        //console.log(resp);
+        Swal.fire({
+          title: 'Registro guardado exitosamente',
+          text: this.newPet.get('medicalRecordForm').value.petData.name,
+          icon: 'success'
+        });
+        this.newPet.reset();
+        this.router.navigate(['/pets']);
+      });
     });
+
   }
 }

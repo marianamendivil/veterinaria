@@ -1,1 +1,11 @@
-<p>search works!</p>
+<div class="search">
+  <div class="col-2">
+    <select class="form-control">
+      <!--<option *ngFor="let item of list" [value]="item">{{item}}</option>-->
+      <option value="">Hola</option>
+    </select>
+  </div>
+  <div class="col-3">
+    <input #searchKeyword type="text" (keyup)="searchPets(searchKeyword.value)" class="form-control" placeholder="Buscar">
+  </div>
+</div>

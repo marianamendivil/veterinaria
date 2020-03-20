@@ -15,6 +15,8 @@ export class VisitComponent implements OnInit {
   newVisit = false;
   pet: any = {};
   petId: string;
+  visitId: any[] = [];
+  visitPet: any[] = [];
 
   constructor(private router: Router, private petsService: PetsService, private activatedRoute: ActivatedRoute) {
     this.petId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -29,7 +31,6 @@ export class VisitComponent implements OnInit {
     }
 
     this.visitForm = new FormGroup({
-      visits: new FormGroup({
         date: new FormControl('', Validators.required),
         cause: new FormControl('', Validators.required),
         patientHistory: new FormGroup({
@@ -40,15 +41,10 @@ export class VisitComponent implements OnInit {
         }),
         veterinary: new FormControl('', Validators.required),
         visitId: new FormControl(this.petId)
-      })
-    });
+      });
     if(this.newVisit){
       this.newPetForm.addControl('visitForm', this.visitForm);
     }
-  }
-
-  setVisitForm() {
-    //this.visitFormChanged.emit(this.visitForm);
   }
 
   saveVisitChanges() {
@@ -67,13 +63,22 @@ export class VisitComponent implements OnInit {
     } else {
     }*/
 
-    this.petsService.addVisit(this.visitForm.value, this.petId).subscribe(resp => {
-      Swal.fire({
-        title: 'Nueva visita agregada',
-        text: 'Guardado exitosamente',
-        icon: 'success'
-      });
+    this.petsService.getVisits().subscribe(resp => {
       console.log(resp);
-    });
+      this.visitId = resp;
+      this.visitPet = this.visitId.filter(visit => visit.petId.includes(this.petId));
+      console.log(this.visitPet[0].id);
+      this.petsService.addNewVisit(this.visitForm.value, this.visitPet[0].id).subscribe(resp => {
+        Swal.fire({
+          title: 'Nueva visita agregada',
+          text: 'Guardado exitosamente',
+          icon: 'success'
+        });
+        this.visitForm.reset();
+        this.router.navigate(['/pets']);
+        console.log(resp);
+      });
+    })
+
   }
 }

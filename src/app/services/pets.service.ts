@@ -25,8 +25,17 @@ export class PetsService {
     return this.http.delete(`${this.url}/historiaClinica/${id}.json`);
   }
 
-  addVisit(visit: MedicalRecord, id: string) {
-    return this.http.post(`${this.url}/historiaClinica/${id}/visits.json`, visit).pipe(
+  addVisit(visit: Visits) {
+    return this.http.post(`${this.url}/visitas.json`, visit).pipe(
+      map((resp: any) => {
+        visit.id = resp.name;
+        return visit;
+      })
+    );
+  }
+
+  addNewVisit(visit: Visits, id: string) {
+    return this.http.post(`${this.url}/visitas/${id}.json`, visit).pipe(
       map((resp: any) => {
         visit.id = resp.name;
         return visit;
@@ -40,6 +49,10 @@ export class PetsService {
 
   getRecords() {
     return this.http.get(`${this.url}/historiaClinica.json`).pipe(map(this.makeArray));
+  }
+
+  getVisits() {
+    return this.http.get(`${this.url}/visitas.json`).pipe(map(this.makeArray));
   }
 
   getRecord(id: string) {
@@ -77,7 +90,6 @@ export class PetsService {
 export interface MedicalRecord {
   petData: PetData;
   ownerData: OwnerData;
-  visits: Visits;
   id: string;
 }
 
@@ -105,14 +117,14 @@ export interface PetData {
 }
 
 export interface Visits {
-  visits: {
-    date: Date;
-    cause: string;
-    patientHistory: {
-      vaccines: string;
-      lastDeworming: string;
-      surgeries: string;
-    };
-    veterinary: string;
+  date: Date;
+  cause: string;
+  patientHistory: {
+    vaccines: string;
+    lastDeworming: string;
+    surgeries: string;
   };
+  veterinary: string;
+  id: string;
+  petId: string;
 }

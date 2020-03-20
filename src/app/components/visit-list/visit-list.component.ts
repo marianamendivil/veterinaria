@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PetsService } from 'src/app/services/pets.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-visit-list',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisitListComponent implements OnInit {
 
-  constructor() { }
+  visits: any[] = [];
+  allVisits: any[] = [];
+
+  constructor(private petsService: PetsService, private activatedRoute:ActivatedRoute, public auth: AuthService) { }
 
   ngOnInit() {
+    this.petsService.getVisits().subscribe(resp => {
+      console.log(resp);
+      this.visits = resp;
+      this.allVisits = this.visits;
+    });
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params);
+        this.visits = this.allVisits.filter((pet) =>
+          pet[params.option].toLowerCase().includes(params.keyword.toLowerCase()));
+      }
+    );
   }
 
 }
