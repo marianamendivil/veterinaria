@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -6,15 +6,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './medical-record.component.html',
   styleUrls: ['./medical-record.component.css']
 })
-export class MedicalRecordComponent implements OnInit{
-  //@Output() medicalRecordFormChanged: EventEmitter<FormGroup> = new EventEmitter();
+export class MedicalRecordComponent implements OnInit {
+  // @Output() medicalRecordFormChanged: EventEmitter<FormGroup> = new EventEmitter();
   @Input() newPetForm: FormGroup;
   medicalRecordForm: FormGroup;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.medicalRecordForm = new FormGroup({
       petData: new FormGroup({
         name: new FormControl('', Validators.required),

@@ -20,13 +20,13 @@ export class VisitComponent implements OnInit {
 
   constructor(private router: Router, private petsService: PetsService, private activatedRoute: ActivatedRoute) {
     this.petId = this.activatedRoute.snapshot.paramMap.get('id');
-    //this.visitFormChanged = new EventEmitter();
+    // this.visitFormChanged = new EventEmitter();
   }
 
   ngOnInit() {
-    let url = this.router.url;
+    const url = this.router.url;
     console.log(url);
-    if (url == '/pets/new') {
+    if (url === '/pets/new') {
       this.newVisit = true;
     }
 
@@ -42,7 +42,7 @@ export class VisitComponent implements OnInit {
         veterinary: new FormControl('', Validators.required),
         visitId: new FormControl(this.petId)
       });
-    if(this.newVisit){
+    if (this.newVisit) {
       this.newPetForm.addControl('visitForm', this.visitForm);
     }
   }
@@ -78,7 +78,7 @@ export class VisitComponent implements OnInit {
         this.router.navigate(['/pets']);
         console.log(resp);
       });
-    })
+    });
 
   }
 }

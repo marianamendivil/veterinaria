@@ -5,20 +5,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PetsModule } from './modules/pets-module/pets.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { VisitsModule } from './modules/visits-module/visits.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { SearchComponent } from './components/shared/search/search.component';
-import { VisitListComponent } from './components/visit-list/visit-list.component';
+import { BackButtonModule } from './modules/back-button/back-button.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    SearchComponent,
-    VisitListComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,9 @@ import { VisitListComponent } from './components/visit-list/visit-list.component
     ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    PetsModule
+    BackButtonModule,
+    PetsModule,
+    VisitsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

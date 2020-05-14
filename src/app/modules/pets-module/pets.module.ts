@@ -7,9 +7,9 @@ import { PetCardComponent } from './pet-card/pet-card.component';
 import { MedicalRecordComponent } from './medical-record/medical-record.component';
 import { PetRecordComponent } from './pet-record/pet-record.component';
 import { NewPetComponent } from './new-pet/new-pet.component';
-import { VisitComponent } from 'src/app/components/visit/visit.component';
 import { CommonModule } from '@angular/common';
-import { BackButtonComponent } from 'src/app/components/shared/back-button/back-button.component';
+import { VisitsModule } from '../visits-module/visits.module';
+import { BackButtonModule } from '../back-button/back-button.module';
 
 @NgModule({
   declarations: [
@@ -17,15 +17,14 @@ import { BackButtonComponent } from 'src/app/components/shared/back-button/back-
     PetCardComponent,
     MedicalRecordComponent,
     PetRecordComponent,
-    NewPetComponent,
-    VisitComponent,
-    BackButtonComponent
+    NewPetComponent
   ],
   imports: [
-      CommonModule,
-      FormsModule,
-      ReactiveFormsModule,
-      PetsRoutingModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BackButtonModule,
+    PetsRoutingModule
   ],
 })
 export class PetsModule { }

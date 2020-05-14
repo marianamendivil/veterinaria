@@ -19,11 +19,11 @@ export class PetCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    //let petPhoto = this.petsService.getPhoto().subscribe();
-    //console.log(petPhoto);
+    // let petPhoto = this.petsService.getPhoto().subscribe();
+    // console.log(petPhoto);
   }
 
-  openPet(){
+  openPet() {
     console.log(this.id);
     console.log(this.pet);
     console.log(this.petSelected);
@@ -31,7 +31,7 @@ export class PetCardComponent implements OnInit {
     this.router.navigate(['/pets', this.pet.id]);
   }
 
-  openVisit(){
-    this.router.navigate(['/visit', this.pet.id]);
+  openVisit() {
+    this.router.navigate(['/visits', this.pet.id]);
   }
 }

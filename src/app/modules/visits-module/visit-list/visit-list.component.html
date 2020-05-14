@@ -1,0 +1,14 @@
+<div class="visit-table">
+  <table class="info-block">
+    <tr class="info-item-table">
+      <th>Fecha</th>
+      <th>Veterinario</th>
+      <th>Causa</th>
+    </tr>
+    <tr class="info-item-table" *ngFor="let visit of visits">
+      <td >{{visit.date}}</td>
+      <td >{{visit.veterinary}}</td>
+      <td >{{visit.cause}}</td>
+    </tr>
+  </table>
+</div>

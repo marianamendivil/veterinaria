@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Subject, Observable } from 'rxjs';
+import { Data } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,17 @@ export class PetsService {
   private url = 'https://veterinaria-de1d4.firebaseio.com';
   private photoUrl = 'https://firebasestorage.googleapis.com/v0/b/veterinaria-de1d4.appspot.com/o';
   private invocation = new XMLHttpRequest();
+  private subjectParams = new Subject<any>();
 
   constructor(private http: HttpClient) {}
+
+  sendParams(params: any) {
+    this.subjectParams.next(params);
+  }
+
+  getParams(): Observable<any> {
+    return this.subjectParams.asObservable();
+  }
 
   addRecord(medicalRecord: MedicalRecord) {
     return this.http.post(`${this.url}/historiaClinica.json`, medicalRecord).pipe(
@@ -60,7 +71,7 @@ export class PetsService {
   }
 
   getPhoto() {
-    //return this.http.get(`${this.photoUrl}/pepe.jpg?alt=media&token=0dde4633-b2ce-4b34-9334-67d6a1d9184f`);
+    // return this.http.get(`${this.photoUrl}/pepe.jpg?alt=media&token=0dde4633-b2ce-4b34-9334-67d6a1d9184f`);
   }
   /*callOtherDomain() {
     if(this.invocation) {

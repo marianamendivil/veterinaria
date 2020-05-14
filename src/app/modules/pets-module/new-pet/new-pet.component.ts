@@ -26,7 +26,7 @@ export class NewPetComponent implements OnInit {
   saveChanges() {
     this.visit = this.newPet.get('visitForm').value;
     this.medicalRecord = this.newPet.get('medicalRecordForm').value;
-    //const newPet = Object.assign(this.newPet.get('medicalRecordForm').value, this.newPet.get('visitForm').value);
+    // const newPet = Object.assign(this.newPet.get('medicalRecordForm').value, this.newPet.get('visitForm').value);
 
     console.log(this.visit);
     console.log(this.medicalRecord);
@@ -50,7 +50,7 @@ export class NewPetComponent implements OnInit {
       console.log(this.petId);
       this.visit.petId = this.petId;
       this.petsService.addVisit(this.visit).subscribe(resp => {
-        //console.log(resp);
+        // console.log(resp);
         Swal.fire({
           title: 'Registro guardado exitosamente',
           text: this.newPet.get('medicalRecordForm').value.petData.name,
